@@ -1,9 +1,15 @@
 public class Client extends Utilisateur {
 
     private Abonnement abonnement;
+    private String genrePrefere; // Nouveau : ex "Action", "Animation"
 
     public Client(int id, String nom, String email, String motDePasse) {
         super(id, nom, email, motDePasse);
+    }
+
+    // Nouvelle méthode : Suggérer un film selon le genre préféré du client
+    public boolean aimeLeGenre(Film film) {
+        return film.getGenre() != null && film.getGenre().equalsIgnoreCase(this.genrePrefere);
     }
 
     public void rechercherFilm(String titre) {
@@ -54,5 +60,13 @@ public class Client extends Utilisateur {
 
     public void setAbonnement(Abonnement abonnement) {
         this.abonnement = abonnement;
+    }
+
+    public String getGenrePrefere() {
+        return genrePrefere;
+    }
+
+    public void setGenrePrefere(String genrePrefere) {
+        this.genrePrefere = genrePrefere;
     }
 }

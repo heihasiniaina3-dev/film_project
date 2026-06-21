@@ -35,4 +35,15 @@ class ClientTest {
         client.setNom("Nouveau Nom");
         assertEquals("Nouveau Nom", client.getNom());
     }
+    @Test
+    void testSuggestionSelonGenrePrefere() {
+        client.setGenrePrefere("Animation");
+
+        Film filmAnime = new Film("One Piece Film: Red", "Animation", 115);
+        Film filmSciFi = new Film("Interstellar", "Sci-Fi", 169);
+
+        // Le client devrait aimer le film d'animation mais pas la science-fiction
+        assertTrue(client.aimeLeGenre(filmAnime), "Le client devrait aimer ce genre");
+        assertFalse(client.aimeLeGenre(filmSciFi), "Le client ne devrait pas aimer ce genre");
+    }
 }
